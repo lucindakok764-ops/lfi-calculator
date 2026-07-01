@@ -94,7 +94,22 @@ inputIds.forEach((id,index)=>{
 
     const veld = document.getElementById(id);
 
-    veld.addEventListener("input",bereken);
+   veld.addEventListener("input",function(){
+
+    bereken();
+
+    if(veld.value.length>=2){
+
+        let volgende=index+1;
+
+        if(volgende>=inputIds.length)
+            volgende=0;
+
+        document.getElementById(inputIds[volgende]).focus();
+
+    }
+
+});
 
     veld.addEventListener("keydown",function(e){
 
