@@ -1,4 +1,6 @@
-// ===== LFI Calculator Pro =====
+// ===============================
+// LFI Calculator Pro 4.0
+// ===============================
 
 const inputIds = [
     "adac500","adac1000","adac2000",
@@ -8,146 +10,149 @@ const inputIds = [
     "srtAD","srtAS"
 ];
 
-function waarde(id){
+function getValue(id){
 
-    const veld = document.getElementById(id);
+    const field=document.getElementById(id);
 
-    const v = parseFloat(veld.value);
+    const value=parseFloat(field.value);
 
-    if(isNaN(v)){
-        veld.style.backgroundColor="";
+    if(isNaN(value)){
+
+        field.style.backgroundColor="";
+
         return null;
+
     }
 
-    if(v % 5 !== 0){
+    if(value % 5 !==0){
 
-        veld.style.backgroundColor="#ffd6d6";
+        field.style.background="#ffd4d4";
 
     }else{
 
-        if(veld.closest(".ad"))
-            veld.style.backgroundColor="#fff4f4";
-        else if(veld.closest(".as"))
-            veld.style.backgroundColor="#f4f8ff";
-        else
-            veld.style.backgroundColor="white";
+        if(field.closest(".ad"))
+            field.style.background="#fff4f4";
+
+        else if(field.closest(".as"))
+            field.style.background="#f4f8ff";
 
     }
 
-    return v;
+    return value;
+
 }
 
-function gemiddelde(a,b,c){
-    if(a===null || b===null || c===null) return "";
+function average(a,b,c){
+
+    if(a===null || b===null || c===null)
+        return null;
+
     return Math.round((a+b+c)/3);
+
 }
 
-function bereken(){
+function show(id,value){
 
-    const adac = gemiddelde(
-        waarde("adac500"),
-        waarde("adac1000"),
-        waarde("adac2000")
-    );
+    document.getElementById(id).textContent =
+        value===null ? "--" : value;
 
-    const adbc = gemiddelde(
-        waarde("adbc500"),
-        waarde("adbc1000"),
-        waarde("adbc2000")
-    );
-
-    const asac = gemiddelde(
-        waarde("asac500"),
-        waarde("asac1000"),
-        waarde("asac2000")
-    );
-
-    const asbc = gemiddelde(
-        waarde("asbc500"),
-        waarde("asbc1000"),
-        waarde("asbc2000")
-    );
-
-    document.getElementById("adacLFI").textContent =
-        adac === "" ? "" : adac + " dB HL";
-
-    document.getElementById("adbcLFI").textContent =
-        adbc === "" ? "" : adbc + " dB HL";
-
-    document.getElementById("adbc60").textContent =
-        adbc === "" ? "" : (adbc + 60) + " dB HL";
-
-    document.getElementById("asacLFI").textContent =
-        asac === "" ? "" : asac + " dB HL";
-
-    document.getElementById("asbcLFI").textContent =
-        asbc === "" ? "" : asbc + " dB HL";
-
-    document.getElementById("asbc60").textContent =
-        asbc === "" ? "" : (asbc + 60) + " dB HL";
 }
 
+function calculate(){
 
-// automatische berekening + Enter naar volgend vak
+    const adac=average(
+        getValue("adac500"),
+        getValue("adac1000"),
+        getValue("adac2000")
+    );
+
+    const adbc=average(
+        getValue("adbc500"),
+        getValue("adbc1000"),
+        getValue("adbc2000")
+    );
+
+    const asac=average(
+        getValue("asac500"),
+        getValue("asac1000"),
+        getValue("asac2000")
+    );
+
+    const asbc=average(
+        getValue("asbc500"),
+        getValue("asbc1000"),
+        getValue("asbc2000")
+    );
+
+    show("sumADAC",adac);
+
+    show("sumASAC",asac);
+
+    show("sumADBC",adbc);
+
+    show("sumASBC",asbc);
+
+    show("sumADBC60",adbc===null ? null : adbc+60);
+
+    show("sumASBC60",asbc===null ? null : asbc+60);
+
+}
 
 inputIds.forEach((id,index)=>{
 
-    const veld = document.getElementById(id);
+    const field=document.getElementById(id);
 
-   veld.addEventListener("input",function(){
+    field.addEventListener("input",()=>{
 
-    bereken();
+        calculate();
 
-    if(veld.value.length>=2){
+        if(field.value.length>=2){
 
-        let volgende=index+1;
+            let next=index+1;
 
-        if(volgende>=inputIds.length)
-            volgende=0;
+            if(next>=inputIds.length)
+                next=0;
 
-        document.getElementById(inputIds[volgende]).focus();
+            document.getElementById(inputIds[next]).focus();
 
-    }
+        }
 
-});
+    });
 
-    veld.addEventListener("keydown",function(e){
+    field.addEventListener("keydown",(e)=>{
 
-        if(e.key==="Enter"){
-            if(e.key==="ArrowRight"){
+        let next=index+1;
 
-    e.preventDefault();
+        let prev=index-1;
 
-    let volgende=index+1;
+        if(next>=inputIds.length)
+            next=0;
 
-    if(volgende>=inputIds.length)
-        volgende=0;
+        if(prev<0)
+            prev=inputIds.length-1;
 
-    document.getElementById(inputIds[volgende]).focus();
-
-}
-
-if(e.key==="ArrowLeft"){
-
-    e.preventDefault();
-
-    let vorige=index-1;
-
-    if(vorige<0)
-        vorige=inputIds.length-1;
-
-    document.getElementById(inputIds[vorige]).focus();
-
-}
+        if(e.key==="Enter" || e.key==="ArrowRight"){
 
             e.preventDefault();
 
-            let volgende=index+1;
+            document.getElementById(inputIds[next]).focus();
 
-            if(volgende>=inputIds.length)
-                volgende=0;
+        }
 
-            document.getElementById(inputIds[volgende]).focus();
+        if(e.key==="ArrowLeft"){
+
+            e.preventDefault();
+
+            document.getElementById(inputIds[prev]).focus();
+
+        }
+
+        if(e.key==="Backspace" &&
+            field.value===""){
+
+            e.preventDefault();
+
+            document.getElementById(inputIds[prev]).focus();
 
         }
 
@@ -155,10 +160,7 @@ if(e.key==="ArrowLeft"){
 
 });
 
-
-// Wis-knop
-
-document.getElementById("clearBtn").addEventListener("click",function(){
+document.getElementById("clearBtn").onclick=function(){
 
     inputIds.forEach(id=>{
 
@@ -166,35 +168,35 @@ document.getElementById("clearBtn").addEventListener("click",function(){
 
     });
 
-    bereken();
+    calculate();
 
     document.getElementById(inputIds[0]).focus();
 
-});
+}
 
+document.getElementById("copyBtn").onclick=function(){
 
-// Kopieer-knop
+    const txt=`
+RESULTAAT
 
-document.getElementById("copyBtn").addEventListener("click",function(){
+AD
+AC : ${document.getElementById("sumADAC").textContent}
+BC : ${document.getElementById("sumADBC").textContent}
+BC+60 : ${document.getElementById("sumADBC60").textContent}
 
-    const tekst =
-`LFI Calculator
+AS
+AC : ${document.getElementById("sumASAC").textContent}
+BC : ${document.getElementById("sumASBC").textContent}
+BC+60 : ${document.getElementById("sumASBC60").textContent}
 
-AD AC : ${document.getElementById("adacLFI").textContent}
-AD BC : ${document.getElementById("adbcLFI").textContent}
-AD BC+60 : ${document.getElementById("adbc60").textContent}
+SRT AD : ${document.getElementById("srtAD").value}
+SRT AS : ${document.getElementById("srtAS").value}
+`;
 
-AS AC : ${document.getElementById("asacLFI").textContent}
-AS BC : ${document.getElementById("asbcLFI").textContent}
-AS BC+60 : ${document.getElementById("asbc60").textContent}
-
-SRT AD : ${document.getElementById("srtAD").value} dB HL
-SRT AS : ${document.getElementById("srtAS").value} dB HL`;
-
-    navigator.clipboard.writeText(tekst);
+    navigator.clipboard.writeText(txt);
 
     alert("Resultaten gekopieerd.");
 
-});
+}
 
-bereken();
+calculate();
