@@ -9,8 +9,32 @@ const inputIds = [
 ];
 
 function waarde(id){
-    const v = parseFloat(document.getElementById(id).value);
-    return isNaN(v) ? null : v;
+
+    const veld = document.getElementById(id);
+
+    const v = parseFloat(veld.value);
+
+    if(isNaN(v)){
+        veld.style.backgroundColor="";
+        return null;
+    }
+
+    if(v % 5 !== 0){
+
+        veld.style.backgroundColor="#ffd6d6";
+
+    }else{
+
+        if(veld.closest(".ad"))
+            veld.style.backgroundColor="#fff4f4";
+        else if(veld.closest(".as"))
+            veld.style.backgroundColor="#f4f8ff";
+        else
+            veld.style.backgroundColor="white";
+
+    }
+
+    return v;
 }
 
 function gemiddelde(a,b,c){
