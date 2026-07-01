@@ -14,68 +14,85 @@
 
     <h1>LFI Calculator Pro</h1>
 
-    <table>
+<table class="lfiTable">
 
-        <thead>
-            <tr>
-                <th></th>
-                <th>500 Hz</th>
-                <th>1000 Hz</th>
-                <th>2000 Hz</th>
-                <th>LFI</th>
-                <th>+60</th>
-            </tr>
-        </thead>
+<thead>
 
-        <tbody>
+<tr>
 
-            <tr class="ad">
-                <td>AD AC</td>
+<th></th>
 
-                <td><input id="adac500"></td>
-                <td><input id="adac1000"></td>
-                <td><input id="adac2000"></td>
+<th>500</th>
 
-                <td id="adacLFI"></td>
-                <td></td>
-            </tr>
+<th>1000</th>
 
-            <tr class="ad">
-                <td>AD BC</td>
+<th>2000</th>
 
-                <td><input id="adbc500"></td>
-                <td><input id="adbc1000"></td>
-                <td><input id="adbc2000"></td>
+<th>LFI</th>
 
-                <td id="adbcLFI"></td>
-                <td id="adbc60"></td>
-            </tr>
+<th>+60</th>
 
-            <tr class="as">
-                <td>AS AC</td>
+</tr>
 
-                <td><input id="asac500"></td>
-                <td><input id="asac1000"></td>
-                <td><input id="asac2000"></td>
+</thead>
 
-                <td id="asacLFI"></td>
-                <td></td>
-            </tr>
+<tbody>
 
-            <tr class="as">
-                <td>AS BC</td>
+<tr class="ad">
 
-                <td><input id="asbc500"></td>
-                <td><input id="asbc1000"></td>
-                <td><input id="asbc2000"></td>
+<td>🔴 AD AC</td>
 
-                <td id="asbcLFI"></td>
-                <td id="asbc60"></td>
-            </tr>
+<td><input id="adac500" maxlength="3"></td>
+<td><input id="adac1000" maxlength="3"></td>
+<td><input id="adac2000" maxlength="3"></td>
 
-        </tbody>
+<td id="adacLFI"></td>
+<td></td>
 
-    </table>
+</tr>
+
+<tr class="ad">
+
+<td>🔴 AD BC</td>
+
+<td><input id="adbc500" maxlength="3"></td>
+<td><input id="adbc1000" maxlength="3"></td>
+<td><input id="adbc2000" maxlength="3"></td>
+
+<td id="adbcLFI"></td>
+<td id="adbc60"></td>
+
+</tr>
+
+<tr class="as">
+
+<td>🔵 AS AC</td>
+
+<td><input id="asac500" maxlength="3"></td>
+<td><input id="asac1000" maxlength="3"></td>
+<td><input id="asac2000" maxlength="3"></td>
+
+<td id="asacLFI"></td>
+<td></td>
+
+</tr>
+
+<tr class="as">
+
+<td>🔵 AS BC</td>
+
+<td><input id="asbc500" maxlength="3"></td>
+<td><input id="asbc1000" maxlength="3"></td>
+<td><input id="asbc2000" maxlength="3"></td>
+
+<td id="asbcLFI"></td>
+<td id="asbc60"></td>
+
+</tr>
+
+</tbody>
+
+</table>
 
     <div class="speech">
 
