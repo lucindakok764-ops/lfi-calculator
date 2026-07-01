@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFI Calculator Pro</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>LFI Calculator Pro</h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th></th>
+                <th>500 Hz</th>
+                <th>1000 Hz</th>
+                <th>2000 Hz</th>
+                <th>LFI</th>
+                <th>+60</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr class="ad">
+                <td>AD AC</td>
+
+                <td><input id="adac500"></td>
+                <td><input id="adac1000"></td>
+                <td><input id="adac2000"></td>
+
+                <td id="adacLFI"></td>
+                <td></td>
+            </tr>
+
+            <tr class="ad">
+                <td>AD BC</td>
+
+                <td><input id="adbc500"></td>
+                <td><input id="adbc1000"></td>
+                <td><input id="adbc2000"></td>
+
+                <td id="adbcLFI"></td>
+                <td id="adbc60"></td>
+            </tr>
+
+            <tr class="as">
+                <td>AS AC</td>
+
+                <td><input id="asac500"></td>
+                <td><input id="asac1000"></td>
+                <td><input id="asac2000"></td>
+
+                <td id="asacLFI"></td>
+                <td></td>
+            </tr>
+
+            <tr class="as">
+                <td>AS BC</td>
+
+                <td><input id="asbc500"></td>
+                <td><input id="asbc1000"></td>
+                <td><input id="asbc2000"></td>
+
+                <td id="asbcLFI"></td>
+                <td id="asbc60"></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="speech">
+
+        <label>
+            SRT AD
+            <input id="srtAD">
+            dB HL
+        </label>
+
+        <label>
+            SRT AS
+            <input id="srtAS">
+            dB HL
+        </label>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="clearBtn">
+            Wis
+        </button>
+
+        <button id="copyBtn">
+            Kopieer
+        </button>
+
+        <button onclick="window.print()">
+            Print
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
