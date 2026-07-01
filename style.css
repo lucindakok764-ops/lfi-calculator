@@ -1,120 +1,172 @@
-/* Algemene pagina */
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #edf1f5;
-    margin: 20px;
+/* ===========================
+   LFI Calculator Pro v3.0
+   =========================== */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:15px;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:#eef2f7;
 }
 
 /* Hoofdvenster */
-.container {
-    width: 460px;
-    margin: auto;
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.25);
+
+.container{
+    width:390px;
+    margin:auto;
+    background:#ffffff;
+    border:1px solid #c8c8c8;
+    border-radius:8px;
+    box-shadow:0 3px 10px rgba(0,0,0,.20);
+    overflow:hidden;
 }
 
 /* Titel */
-h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 22px;
-    color: #2c3e50;
+
+h1{
+    margin:0;
+    padding:10px;
+    background:#3d4b5c;
+    color:white;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
 }
 
 /* Tabel */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 12px;
+
+table{
+    width:100%;
+    border-collapse:collapse;
 }
 
-th {
-    background: #d8dde3;
-    color: #222;
-    font-size: 14px;
-    padding: 6px;
+th{
+    background:#d9dee4;
+    padding:6px;
+    font-size:13px;
+    border:1px solid #bdbdbd;
 }
 
-td {
-    border: 1px solid #c8c8c8;
-    text-align: center;
-    padding: 5px;
+td{
+    border:1px solid #d5d5d5;
+    padding:4px;
+    text-align:center;
+    font-size:13px;
 }
 
-/* AD en AS kleuren */
-.ad td:first-child {
-    background: #ffdede;
-    font-weight: bold;
+/* AD */
+
+.ad td:first-child{
+    background:#ffd9d9;
+    font-weight:bold;
 }
 
-.as td:first-child {
-    background: #ddeaff;
-    font-weight: bold;
+/* AS */
+
+.as td:first-child{
+    background:#dcecff;
+    font-weight:bold;
 }
 
-/* Invoervakken */
-input {
-    width: 52px;
-    height: 28px;
-    text-align: center;
-    font-size: 14px;
-    border: 1px solid #999;
-    border-radius: 4px;
+/* Invoervelden */
+
+input{
+    width:48px;
+    height:28px;
+    border:1px solid #9aa0a6;
+    border-radius:4px;
+    text-align:center;
+    font-size:14px;
+    outline:none;
+    transition:.2s;
 }
 
-/* AD invoer */
-.ad input {
-    background: #fff4f4;
+/* AD */
+
+.ad input{
+    background:#fff4f4;
 }
 
-/* AS invoer */
-.as input {
-    background: #f4f8ff;
+/* AS */
+
+.as input{
+    background:#f4f8ff;
 }
 
-/* Resultaatvelden */
+/* Focus */
+
+input:focus{
+    border:2px solid #2d6cdf;
+    background:#ffffe0;
+}
+
+/* Resultaten */
+
 #adacLFI,
 #adbcLFI,
 #adbc60,
 #asacLFI,
 #asbcLFI,
-#asbc60 {
-    background: #dff6df;
-    font-weight: bold;
-    min-width: 70px;
+#asbc60{
+
+    background:#dff7df;
+    font-weight:bold;
+    color:#155724;
+    min-width:80px;
+
 }
 
 /* SRT */
-.speech {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-    margin-bottom: 15px;
-}
 
-.speech label {
-    font-size: 14px;
+.speech{
+
+    display:flex;
+    justify-content:space-around;
+
+    padding:10px;
+
+    background:#f7f7f7;
+
+    border-top:1px solid #ddd;
+
 }
 
 /* Knoppen */
-.buttons {
-    display: flex;
-    justify-content: space-between;
+
+.buttons{
+
+    display:flex;
+
+    justify-content:space-evenly;
+
+    padding:10px;
+
 }
 
-button {
-    background: #2d6cdf;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-    font-size: 14px;
+button{
+
+    background:#2d6cdf;
+
+    color:white;
+
+    border:none;
+
+    border-radius:5px;
+
+    padding:8px 15px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
 }
 
-button:hover {
-    background: #1d56ba;
+button:hover{
+
+    background:#204f9d;
+
 }
