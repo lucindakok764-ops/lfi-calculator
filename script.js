@@ -114,6 +114,31 @@ inputIds.forEach((id,index)=>{
     veld.addEventListener("keydown",function(e){
 
         if(e.key==="Enter"){
+            if(e.key==="ArrowRight"){
+
+    e.preventDefault();
+
+    let volgende=index+1;
+
+    if(volgende>=inputIds.length)
+        volgende=0;
+
+    document.getElementById(inputIds[volgende]).focus();
+
+}
+
+if(e.key==="ArrowLeft"){
+
+    e.preventDefault();
+
+    let vorige=index-1;
+
+    if(vorige<0)
+        vorige=inputIds.length-1;
+
+    document.getElementById(inputIds[vorige]).focus();
+
+}
 
             e.preventDefault();
 
