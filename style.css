@@ -1,6 +1,6 @@
-/* ======================================================
+/* ===================================================
    LFI Calculator Pro 4.0
-====================================================== */
+=================================================== */
 
 *{
     box-sizing:border-box;
@@ -9,9 +9,13 @@
 body{
     margin:0;
     padding:20px;
-    background:#edf2f7;
-    font-family:Segoe UI,Arial,sans-serif;
+    background:#eef2f7;
+    font-family:"Segoe UI",Arial,sans-serif;
 }
+
+/* =============================
+   Hoofdvenster
+============================= */
 
 .app{
 
@@ -19,23 +23,23 @@ body{
 
     margin:auto;
 
-    background:white;
+    background:#ffffff;
 
     border-radius:10px;
 
-    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.20);
 
-    box-shadow:0 4px 14px rgba(0,0,0,.20);
+    overflow:hidden;
 
 }
 
-/* =======================
+/* =============================
    Titel
-======================= */
+============================= */
 
 .titlebar{
 
-    background:#394b59;
+    background:#3d4b5c;
 
     color:white;
 
@@ -51,17 +55,145 @@ body{
 
     font-size:18px;
 
+    font-weight:600;
+
 }
 
-/* =======================
-   Resultaat
-======================= */
+/* =============================
+   Invoertabel
+============================= */
+
+.inputTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.inputTable th{
+
+    background:#d9dee4;
+
+    border:1px solid #cfcfcf;
+
+    padding:7px;
+
+    font-size:14px;
+
+}
+
+.inputTable td{
+
+    border:1px solid #d9d9d9;
+
+    padding:6px;
+
+    text-align:center;
+
+}
+
+/* AD */
+
+.ad td:first-child{
+
+    background:#ffe0e0;
+
+    font-weight:bold;
+
+    color:#8b0000;
+
+}
+
+/* AS */
+
+.as td:first-child{
+
+    background:#e3f0ff;
+
+    font-weight:bold;
+
+    color:#004080;
+
+}
+
+/* =============================
+   Invoervelden
+============================= */
+
+input{
+
+    width:48px;
+
+    height:30px;
+
+    border-radius:5px;
+
+    border:1px solid #999;
+
+    text-align:center;
+
+    font-size:15px;
+
+    transition:.15s;
+
+}
+
+.ad input{
+
+    background:#fff6f6;
+
+}
+
+.as input{
+
+    background:#f6fbff;
+
+}
+
+input:focus{
+
+    background:#fff8c6;
+
+    border:2px solid #2f80ed;
+
+    outline:none;
+
+}
+
+/* =============================
+   SRT
+============================= */
+
+.srtBox{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    padding:12px;
+
+    background:#f7f7f7;
+
+    border-top:1px solid #ddd;
+
+}
+
+.srtBox input{
+
+    width:60px;
+
+}
+
+/* =============================
+   Samenvatting
+============================= */
 
 .resultBox{
 
-    margin:12px;
+    margin:15px;
 
-    border:2px solid #394b59;
+    border:2px solid #3d4b5c;
 
     border-radius:8px;
 
@@ -71,13 +203,15 @@ body{
 
 .resultTitle{
 
-    background:#394b59;
+    background:#3d4b5c;
 
     color:white;
 
     text-align:center;
 
-    padding:6px;
+    padding:8px;
+
+    font-size:16px;
 
     font-weight:bold;
 
@@ -95,139 +229,71 @@ body{
 
     background:#ececec;
 
+    border:1px solid #cfcfcf;
+
     padding:8px;
+
+    font-size:16px;
 
 }
 
 .resultTable td{
 
-    border:1px solid #cccccc;
+    border:1px solid #d6d6d6;
+
+    text-align:center;
 
     padding:10px;
 
-    text-align:center;
-
-    font-size:20px;
+    font-size:22px;
 
     font-weight:bold;
 
 }
+
+.resultTable td:first-child{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    background:#f7f7f7;
+
+}
+
+/* AD kolom */
+
+.resultTable td:nth-child(2){
+
+    background:#fff3f3;
+
+    color:#8b0000;
+
+}
+
+/* AS kolom */
+
+.resultTable td:nth-child(3){
+
+    background:#f2f8ff;
+
+    color:#004080;
+
+}
+
+/* BC+60 */
 
 .green td{
 
-    background:#dff7df;
+    background:#dff8df !important;
+
+    color:#006400;
 
 }
 
-/* =======================
-   Invoer
-======================= */
-
-.inputTable{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    margin-top:8px;
-
-}
-
-.inputTable th{
-
-    background:#d7dde4;
-
-    padding:6px;
-
-}
-
-.inputTable td{
-
-    border:1px solid #d3d3d3;
-
-    padding:5px;
-
-    text-align:center;
-
-}
-
-.ad td:first-child{
-
-    background:#ffdcdc;
-
-    font-weight:bold;
-
-}
-
-.as td:first-child{
-
-    background:#dcebff;
-
-    font-weight:bold;
-
-}
-
-input{
-
-    width:46px;
-
-    height:28px;
-
-    text-align:center;
-
-    font-size:15px;
-
-    border-radius:4px;
-
-    border:1px solid #9aa0a6;
-
-}
-
-.ad input{
-
-    background:#fff5f5;
-
-}
-
-.as input{
-
-    background:#f4f8ff;
-
-}
-
-input:focus{
-
-    background:#fff7c7;
-
-    border:2px solid #2f80ed;
-
-    outline:none;
-
-}
-
-/* =======================
-   SRT
-======================= */
-
-.srtBox{
-
-    display:flex;
-
-    justify-content:space-around;
-
-    padding:12px;
-
-}
-
-.srtBox input{
-
-    width:55px;
-
-}
-
-/* =======================
+/* =============================
    Knoppen
-======================= */
+============================= */
 
 .buttonBar{
 
@@ -235,15 +301,13 @@ input:focus{
 
     justify-content:space-evenly;
 
-    padding:12px;
+    padding:15px;
 
     border-top:1px solid #dddddd;
 
 }
 
 button{
-
-    padding:8px 16px;
 
     background:#2f80ed;
 
@@ -253,14 +317,50 @@ button{
 
     border-radius:6px;
 
-    cursor:pointer;
+    padding:9px 18px;
 
     font-size:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
 
 }
 
 button:hover{
 
     background:#195bb5;
+
+}
+
+/* =============================
+   Print
+============================= */
+
+@media print{
+
+    body{
+
+        background:white;
+
+        padding:0;
+
+    }
+
+    .buttonBar{
+
+        display:none;
+
+    }
+
+    .app{
+
+        width:100%;
+
+        box-shadow:none;
+
+        border:none;
+
+    }
 
 }
