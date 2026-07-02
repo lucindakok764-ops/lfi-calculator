@@ -2,11 +2,10 @@
 <html lang="nl">
 
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LFI Calculator Pro 5.0</title>
+<title>LFI Calculator Pro</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,202 +15,165 @@
 
 <div class="app">
 
-    <!-- Titel -->
+<header class="titleBar">
 
-    <header class="titleBar">
+<h1>LFI Calculator Pro</h1>
 
-        <h1>LFI Calculator Pro</h1>
+</header>
 
-    </header>
+<table class="inputTable">
 
-    <!-- Invoer -->
+<thead>
 
-    <section class="inputPanel">
+<tr>
 
-        <table class="inputTable">
+<th></th>
 
-            <thead>
+<th>500</th>
+<th>1000</th>
+<th>2000</th>
 
-                <tr>
+</tr>
 
-                    <th></th>
-                    <th>500</th>
-                    <th>1000</th>
-                    <th>2000</th>
+</thead>
 
-                </tr>
+<tbody>
 
-            </thead>
+<tr class="right">
 
-            <tbody>
+<td>R LG</td>
 
-                <tr class="ad">
+<td><input id="adac500" maxlength="3"></td>
 
-                    <td>AD AC</td>
+<td><input id="adac1000" maxlength="3"></td>
 
-                    <td><input id="adac500" maxlength="3"></td>
+<td><input id="adac2000" maxlength="3"></td>
 
-                    <td><input id="adac1000" maxlength="3"></td>
+</tr>
 
-                    <td><input id="adac2000" maxlength="3"></td>
+<tr class="right">
 
-                </tr>
+<td>R BG</td>
 
-                <tr class="ad">
+<td><input id="adbc500" maxlength="3"></td>
 
-                    <td>AD BC</td>
+<td><input id="adbc1000" maxlength="3"></td>
 
-                    <td><input id="adbc500" maxlength="3"></td>
+<td><input id="adbc2000" maxlength="3"></td>
 
-                    <td><input id="adbc1000" maxlength="3"></td>
+</tr>
 
-                    <td><input id="adbc2000" maxlength="3"></td>
+<tr class="left">
 
-                </tr>
+<td>L LG</td>
 
-                <tr class="as">
+<td><input id="asac500" maxlength="3"></td>
 
-                    <td>AS AC</td>
+<td><input id="asac1000" maxlength="3"></td>
 
-                    <td><input id="asac500" maxlength="3"></td>
+<td><input id="asac2000" maxlength="3"></td>
 
-                    <td><input id="asac1000" maxlength="3"></td>
+</tr>
 
-                    <td><input id="asac2000" maxlength="3"></td>
+<tr class="left">
 
-                </tr>
+<td>L BG</td>
 
-                <tr class="as">
+<td><input id="asbc500" maxlength="3"></td>
 
-                    <td>AS BC</td>
+<td><input id="asbc1000" maxlength="3"></td>
 
-                    <td><input id="asbc500" maxlength="3"></td>
+<td><input id="asbc2000" maxlength="3"></td>
 
-                    <td><input id="asbc1000" maxlength="3"></td>
+</tr>
 
-                    <td><input id="asbc2000" maxlength="3"></td>
+</tbody>
 
-                </tr>
+</table>
 
-            </tbody>
+<div class="summaryPanel">
 
-        </table>
+<div class="summaryTitle">
 
-    </section>
+Samenvatting
 
-    <!-- SRT -->
+</div>
 
-    <section class="srtPanel">
+<table class="summaryTable">
 
-        <div>
+<thead>
 
-            <label>SRT AD</label>
+<tr>
 
-            <input id="srtAD" maxlength="3">
+<th></th>
 
-            <span>dB HL</span>
+<th>R</th>
 
-        </div>
+<th>L</th>
 
-        <div>
+</tr>
 
-            <label>SRT AS</label>
+</thead>
 
-            <input id="srtAS" maxlength="3">
+<tbody>
 
-            <span>dB HL</span>
+<tr>
 
-        </div>
+<td>LG</td>
 
-    </section>
+<td id="sumADAC">--</td>
 
-    <!-- Samenvatting -->
+<td id="sumASAC">--</td>
 
-    <section class="summaryPanel">
+</tr>
 
-        <div class="summaryTitle">
+<tr>
 
-            Samenvatting
+<td>BG</td>
 
-        </div>
+<td id="sumADBC">--</td>
 
-        <table class="summaryTable">
+<td id="sumASBC">--</td>
 
-            <thead>
+</tr>
 
-                <tr>
+<tr class="plus60">
 
-                    <th></th>
+<td>BG +60</td>
 
-                    <th>AD</th>
+<td id="sumADBC60">--</td>
 
-                    <th>AS</th>
+<td id="sumASBC60">--</td>
 
-                </tr>
+</tr>
 
-            </thead>
+</tbody>
 
-            <tbody>
+</table>
 
-                <tr>
+</div>
 
-                    <td>AC</td>
+<footer class="buttonPanel">
 
-                    <td id="sumADAC">--</td>
+<button id="clearBtn">
 
-                    <td id="sumASAC">--</td>
+Wis
 
-                </tr>
+</button>
 
-                <tr>
+<button id="copyBtn">
 
-                    <td>BC</td>
+Kopieer
 
-                    <td id="sumADBC">--</td>
+</button>
 
-                    <td id="sumASBC">--</td>
+<button onclick="window.print()">
 
-                </tr>
+Print
 
-                <tr class="plus60">
+</button>
 
-                    <td>BC +60</td>
-
-                    <td id="sumADBC60">--</td>
-
-                    <td id="sumASBC60">--</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </section>
-
-    <!-- Knoppen -->
-
-    <footer class="buttonPanel">
-
-        <button id="clearBtn">
-
-            Wis
-
-        </button>
-
-        <button id="copyBtn">
-
-            Kopieer
-
-        </button>
-
-        <button id="printBtn" onclick="window.print()">
-
-            Print
-
-        </button>
-
-    </footer>
+</footer>
 
 </div>
 
