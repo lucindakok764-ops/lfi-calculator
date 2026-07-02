@@ -1,67 +1,76 @@
-/* ===================================================
-   LFI Calculator Pro 4.0
-=================================================== */
+/* ==========================================
+   LFI Calculator Pro 5.0
+========================================== */
 
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    padding:20px;
-    background:#eef2f7;
-    font-family:"Segoe UI",Arial,sans-serif;
-}
 
-/* =============================
-   Hoofdvenster
-============================= */
+    background:#edf2f7;
 
-.app{
-
-    width:420px;
-
-    margin:auto;
-
-    background:#ffffff;
-
-    border-radius:10px;
-
-    box-shadow:0 4px 15px rgba(0,0,0,.20);
-
-    overflow:hidden;
-
-}
-
-/* =============================
-   Titel
-============================= */
-
-.titlebar{
-
-    background:#3d4b5c;
-
-    color:white;
-
-    text-align:center;
+    font-family:Segoe UI,Arial,sans-serif;
 
     padding:10px;
 
 }
 
-.titlebar h1{
+/* ==========================================
+   Venster
+========================================== */
 
-    margin:0;
+.app{
 
-    font-size:18px;
+    width:340px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.20);
+
+}
+
+/* ==========================================
+   Titel
+========================================== */
+
+.titleBar{
+
+    background:#3f4f63;
+
+    color:white;
+
+    text-align:center;
+
+    padding:8px;
+
+}
+
+.titleBar h1{
+
+    font-size:16px;
 
     font-weight:600;
 
 }
 
-/* =============================
-   Invoertabel
-============================= */
+/* ==========================================
+   Invoer
+========================================== */
+
+.inputPanel{
+
+    padding:6px;
+
+}
 
 .inputTable{
 
@@ -75,85 +84,81 @@ body{
 
     background:#d9dee4;
 
-    border:1px solid #cfcfcf;
+    padding:5px;
 
-    padding:7px;
+    border:1px solid #cccccc;
 
-    font-size:14px;
+    font-size:12px;
 
 }
 
 .inputTable td{
 
-    border:1px solid #d9d9d9;
+    border:1px solid #dddddd;
 
-    padding:6px;
+    padding:3px;
 
     text-align:center;
 
-}
+    font-size:13px;
 
-/* AD */
+}
 
 .ad td:first-child{
 
-    background:#ffe0e0;
-
-    font-weight:bold;
+    background:#ffe4e4;
 
     color:#8b0000;
 
-}
+    font-weight:bold;
 
-/* AS */
+}
 
 .as td:first-child{
 
-    background:#e3f0ff;
-
-    font-weight:bold;
+    background:#e5f1ff;
 
     color:#004080;
 
+    font-weight:bold;
+
 }
 
-/* =============================
+/* ==========================================
    Invoervelden
-============================= */
+========================================== */
 
 input{
 
-    width:48px;
+    width:38px;
 
-    height:30px;
-
-    border-radius:5px;
-
-    border:1px solid #999;
+    height:24px;
 
     text-align:center;
 
-    font-size:15px;
+    border:1px solid #999;
 
-    transition:.15s;
+    border-radius:4px;
+
+    font-size:13px;
 
 }
 
 .ad input{
 
-    background:#fff6f6;
+    background:#fff8f8;
 
 }
 
 .as input{
 
-    background:#f6fbff;
+    background:#f7fbff;
 
 }
 
 input:focus{
 
-    background:#fff8c6;
+    background:#fff7c7;
 
     border:2px solid #2f80ed;
 
@@ -161,63 +166,73 @@ input:focus{
 
 }
 
-/* =============================
+/* ==========================================
    SRT
-============================= */
+========================================== */
 
-.srtBox{
+.srtPanel{
 
     display:flex;
 
     justify-content:space-around;
 
-    padding:12px;
+    padding:6px;
 
     background:#f7f7f7;
 
     border-top:1px solid #ddd;
 
-}
-
-.srtBox input{
-
-    width:60px;
+    border-bottom:1px solid #ddd;
 
 }
 
-/* =============================
+.srtPanel label{
+
+    font-size:11px;
+
+}
+
+.srtPanel input{
+
+    width:45px;
+
+    margin:0 3px;
+
+}
+
+/* ==========================================
    Samenvatting
-============================= */
+========================================== */
 
-.resultBox{
+.summaryPanel{
 
-    margin:15px;
+    margin:8px;
 
-    border:2px solid #3d4b5c;
+    border:2px solid #3f4f63;
 
-    border-radius:8px;
+    border-radius:6px;
 
     overflow:hidden;
 
 }
 
-.resultTitle{
+.summaryTitle{
 
-    background:#3d4b5c;
+    background:#3f4f63;
 
     color:white;
 
     text-align:center;
 
-    padding:8px;
+    padding:6px;
 
-    font-size:16px;
+    font-size:14px;
 
     font-weight:bold;
 
 }
 
-.resultTable{
+.summaryTable{
 
     width:100%;
 
@@ -225,65 +240,63 @@ input:focus{
 
 }
 
-.resultTable th{
+.summaryTable th{
 
-    background:#ececec;
+    background:#eeeeee;
 
-    border:1px solid #cfcfcf;
+    border:1px solid #cccccc;
 
-    padding:8px;
+    padding:5px;
 
-    font-size:16px;
+    font-size:13px;
 
 }
 
-.resultTable td{
+.summaryTable td{
 
-    border:1px solid #d6d6d6;
+    border:1px solid #dddddd;
+
+    padding:6px;
 
     text-align:center;
 
-    padding:10px;
-
-    font-size:22px;
+    font-size:18px;
 
     font-weight:bold;
 
 }
 
-.resultTable td:first-child{
+.summaryTable td:first-child{
 
-    font-size:16px;
+    font-size:13px;
 
-    font-weight:600;
-
-    background:#f7f7f7;
+    background:#f6f6f6;
 
 }
 
-/* AD kolom */
+/* AD */
 
-.resultTable td:nth-child(2){
+.summaryTable td:nth-child(2){
 
-    background:#fff3f3;
+    background:#fff1f1;
 
-    color:#8b0000;
-
-}
-
-/* AS kolom */
-
-.resultTable td:nth-child(3){
-
-    background:#f2f8ff;
-
-    color:#004080;
+    color:#b00000;
 
 }
 
-/* BC+60 */
+/* AS */
 
-.green td{
+.summaryTable td:nth-child(3){
+
+    background:#eef6ff;
+
+    color:#004a99;
+
+}
+
+/* BC +60 */
+
+.plus60 td{
 
     background:#dff8df !important;
 
@@ -291,17 +304,17 @@ input:focus{
 
 }
 
-/* =============================
+/* ==========================================
    Knoppen
-============================= */
+========================================== */
 
-.buttonBar{
+.buttonPanel{
 
     display:flex;
 
     justify-content:space-evenly;
 
-    padding:15px;
+    padding:8px;
 
     border-top:1px solid #dddddd;
 
@@ -309,58 +322,54 @@ input:focus{
 
 button{
 
+    border:none;
+
     background:#2f80ed;
 
     color:white;
 
-    border:none;
+    border-radius:5px;
 
-    border-radius:6px;
+    padding:6px 12px;
 
-    padding:9px 18px;
-
-    font-size:14px;
+    font-size:12px;
 
     cursor:pointer;
-
-    transition:.2s;
 
 }
 
 button:hover{
 
-    background:#195bb5;
+    background:#1d5fb5;
 
 }
 
-/* =============================
+/* ==========================================
    Print
-============================= */
+========================================== */
 
 @media print{
 
-    body{
+.buttonPanel{
 
-        background:white;
+display:none;
 
-        padding:0;
+}
 
-    }
+body{
 
-    .buttonBar{
+background:white;
 
-        display:none;
+padding:0;
 
-    }
+}
 
-    .app{
+.app{
 
-        width:100%;
+box-shadow:none;
 
-        box-shadow:none;
+width:100%;
 
-        border:none;
-
-    }
+}
 
 }
