@@ -1,110 +1,138 @@
-// =====================================
-// LFI Calculator Pro 4.0
-// =====================================
+// ========================================
+// LFI Calculator Pro v5.0
+// ========================================
 
+// Alle invoervelden
 const fields = [
-"adac500","adac1000","adac2000",
-"adbc500","adbc1000","adbc2000",
-"asac500","asac1000","asac2000",
-"asbc500","asbc1000","asbc2000",
-"srtAD","srtAS"
+    "adac500","adac1000","adac2000",
+    "adbc500","adbc1000","adbc2000",
+    "asac500","asac1000","asac2000",
+    "asbc500","asbc1000","asbc2000",
+    "srtAD","srtAS"
 ];
 
-function value(id){
+// ----------------------------
+// Waarde ophalen
+// ----------------------------
+function getValue(id){
 
-    const input=document.getElementById(id);
+    const field = document.getElementById(id);
 
-    const v=parseFloat(input.value);
+    const value = parseInt(field.value);
 
-    if(isNaN(v)){
-        input.style.backgroundColor="";
+    if(isNaN(value)){
+        field.style.background="";
         return null;
     }
 
-    // controle op 5 dB
+    // controle 0-120 dB
+    if(value < 0 || value > 120){
 
-    if(v % 5 !==0){
-
-        input.style.background="#ffd6d6";
-
-    }else{
-
-        if(input.closest(".ad"))
-            input.style.background="#fff4f4";
-
-        else if(input.closest(".as"))
-            input.style.background="#f4f8ff";
-
-        else
-            input.style.background="white";
+        field.style.background="#ffb3b3";
+        return null;
 
     }
 
-    return v;
+    // controle op stappen van 5 dB
+    if(value % 5 !==0){
+
+        field.style.background="#ffe0e0";
+
+    }else{
+
+        if(field.closest(".ad"))
+            field.style.background="#fff6f6";
+
+        else if(field.closest(".as"))
+            field.style.background="#f5faff";
+
+    }
+
+    return value;
 
 }
 
+// ----------------------------
+// Gemiddelde berekenen
+// ----------------------------
 function average(a,b,c){
 
-    if(a==null || b==null || c==null)
+    if(a===null || b===null || c===null)
         return null;
 
     return Math.round((a+b+c)/3);
 
 }
 
-function write(id,val){
+// ----------------------------
+// Resultaat tonen
+// ----------------------------
+function show(id,value){
 
-    document.getElementById(id).textContent=
-        val==null ? "--" : val;
+    document.getElementById(id).textContent =
+        value===null ? "--" : value;
 
 }
 
+// ----------------------------
+// Alles berekenen
+// ----------------------------
 function calculate(){
 
-    const adac=average(
-        value("adac500"),
-        value("adac1000"),
-        value("adac2000")
+    const adac = average(
+        getValue("adac500"),
+        getValue("adac1000"),
+        getValue("adac2000")
     );
 
-    const adbc=average(
-        value("adbc500"),
-        value("adbc1000"),
-        value("adbc2000")
+    const adbc = average(
+        getValue("adbc500"),
+        getValue("adbc1000"),
+        getValue("adbc2000")
     );
 
-    const asac=average(
-        value("asac500"),
-        value("asac1000"),
-        value("asac2000")
+    const asac = average(
+        getValue("asac500"),
+        getValue("asac1000"),
+        getValue("asac2000")
     );
 
-    const asbc=average(
-        value("asbc500"),
-        value("asbc1000"),
-        value("asbc2000")
+    const asbc = average(
+        getValue("asbc500"),
+        getValue("asbc1000"),
+        getValue("asbc2000")
     );
 
-    write("sumADAC",adac);
-    write("sumASAC",asac);
+    show("sumADAC",adac);
+    show("sumASAC",asac);
 
-    write("sumADBC",adbc);
-    write("sumASBC",asbc);
+    show("sumADBC",adbc);
+    show("sumASBC",asbc);
 
-    write("sumADBC60",adbc==null?null:adbc+60);
-    write("sumASBC60",asbc==null?null:asbc+60);
+    show("sumADBC60", adbc===null ? null : adbc+60);
+    show("sumASBC60", asbc===null ? null : asbc+60);
 
 }
+
+// ----------------------------
+// Navigatie
+// ----------------------------
 
 fields.forEach((id,index)=>{
 
     const field=document.getElementById(id);
 
+    field.addEventListener("focus",()=>{
+
+        field.select();
+
+    });
+
     field.addEventListener("input",()=>{
 
         calculate();
 
+        // automatisch naar volgend vak
         if(field.value.length>=2){
 
             let next=index+1;
@@ -129,35 +157,37 @@ fields.forEach((id,index)=>{
         if(prev<0)
             prev=fields.length-1;
 
-        if(e.key==="Enter"){
+        switch(e.key){
 
-            e.preventDefault();
+            case "Enter":
 
-            document.getElementById(fields[next]).focus();
+            case "ArrowRight":
 
-        }
+                e.preventDefault();
 
-        if(e.key==="ArrowRight"){
+                document.getElementById(fields[next]).focus();
 
-            e.preventDefault();
+            break;
 
-            document.getElementById(fields[next]).focus();
+            case "ArrowLeft":
 
-        }
+                e.preventDefault();
 
-        if(e.key==="ArrowLeft"){
+                document.getElementById(fields[prev]).focus();
 
-            e.preventDefault();
+            break;
 
-            document.getElementById(fields[prev]).focus();
+            case "Backspace":
 
-        }
+                if(field.value===""){
 
-        if(e.key==="Backspace" && field.value===""){
+                    e.preventDefault();
 
-            e.preventDefault();
+                    document.getElementById(fields[prev]).focus();
 
-            document.getElementById(fields[prev]).focus();
+                }
+
+            break;
 
         }
 
@@ -165,7 +195,11 @@ fields.forEach((id,index)=>{
 
 });
 
-document.getElementById("clearBtn").onclick=function(){
+// ----------------------------
+// Wis
+// ----------------------------
+
+document.getElementById("clearBtn").addEventListener("click",()=>{
 
     fields.forEach(id=>{
 
@@ -177,13 +211,17 @@ document.getElementById("clearBtn").onclick=function(){
 
     document.getElementById(fields[0]).focus();
 
-}
+});
 
-document.getElementById("copyBtn").onclick=function(){
+// ----------------------------
+// Kopiëren
+// ----------------------------
+
+document.getElementById("copyBtn").addEventListener("click",()=>{
 
 let txt=
 
-`LFI Calculator
+`LFI CALCULATOR
 
 AD
 AC : ${document.getElementById("sumADAC").textContent}
@@ -203,6 +241,8 @@ navigator.clipboard.writeText(txt);
 
 alert("Resultaten gekopieerd.");
 
-}
+});
+
+// ----------------------------
 
 calculate();
